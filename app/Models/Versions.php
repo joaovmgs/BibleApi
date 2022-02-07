@@ -13,7 +13,8 @@ class Versions extends Model
 
     protected $fillable = [
         'versionId',
-        'name'
+        'name',
+        'abbreviation'
     ];
 
     public function Verses()

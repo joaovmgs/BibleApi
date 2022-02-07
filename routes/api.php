@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\VersesController;
+use App\Http\Controllers\VersionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,9 @@ Route::resource('books',BooksController::class)->only([
     'index', 'show'
 ]);
 
+Route::resource('versions',VersionsController::class)->only([
+    'index', 'show'
+]);
 
 Route::get('verses/{abbrev}/{teste}',[VersesController::class,'show']);
 
