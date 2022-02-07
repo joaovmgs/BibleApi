@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\TestamentsController;
 use App\Http\Controllers\VersesController;
 use App\Http\Controllers\VersionsController;
 use Illuminate\Http\Request;
@@ -22,6 +23,11 @@ Route::resource('books',BooksController::class)->only([
 ]);
 
 Route::resource('versions',VersionsController::class)->only([
+    'index', 'show'
+]);
+
+
+Route::resource('testaments',TestamentsController::class)->only([
     'index', 'show'
 ]);
 
