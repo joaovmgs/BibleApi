@@ -47,8 +47,6 @@ class VersesController extends Controller
      */
     public function show($abbrev,$teste)
     {
-        return $teste;
-        return $abbrev;
         return new VersesResource(Verses::where('abbreviation', $abbrev)->firstOrFail());
     }
 
