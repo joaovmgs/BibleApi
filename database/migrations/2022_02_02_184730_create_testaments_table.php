@@ -16,6 +16,7 @@ class CreateTestamentsTable extends Migration
         Schema::create('testaments', function (Blueprint $table) {
             $table->increments('testamentId');
             $table->string('name', 35);
+            $table->string('abbreviation',6);
         });
     }
 
