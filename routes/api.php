@@ -36,3 +36,5 @@ Route::resource('testaments',TestamentsController::class)->only([
 
 Route::get('{version}/{book}/{chapters}',[ChaptersController::class,'show']);
 
+Route::get('{version}/{book}/{chapters}/{verse}',[VersesController::class,'show']);
+
