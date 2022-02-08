@@ -135,3 +135,115 @@
 </details>
 
 
+<details>
+  <summary>
+    <b>Get Testament</b> - <i>return testament</i>
+  </summary>
+  <br/>
+  
+  <b>Endpoint:</b> `GET https://api.biblia.help/api/testaments/testament:abbrev`
+  <br /><br />
+  <b>Authenticated:</b> 
+  <ul>
+    <li>No</li>
+  </ul>
+
+  ```
+  {
+    "name": "Antigo Testamento",
+    "abbreviation": "AT"
+  }
+  
+  ```
+</details>
+
+### Chapters
+
+<details>
+  <summary>
+    <b>Get Chapters</b> - <i>return Chapters</i>
+  </summary>
+  <br/>
+  
+  <b>Endpoint:</b> `GET https://api.biblia.help/api/version:abbrev/book:abbrev/chapters`
+  <br /><br />
+  <b>Authenticated:</b> 
+  <ul>
+    <li>No</li>
+  </ul>
+
+  ```
+[
+  {
+    "Version": {
+      "name": "Nova Versão Internacional",
+      "abbreviation": "NVI"
+    },
+    "Book": {
+      "name": "I João",
+      "abbreviation": "1jo",
+      "position": 23
+    },
+    "Verse": {
+      "text": "O que era desde o princípio, o que ouvimos, o que vimos com os nossos olhos, o que contemplamos e as nossas mãos apalparam  -  isto proclamamos a respeito da Palavra da vida.",
+      "chapter": 1,
+      "verse": 1
+    }
+  },
+  {
+    "Version": {
+      "name": "Nova Versão Internacional",
+      "abbreviation": "NVI"
+    },
+    "Book": {
+      "name": "I João",
+      "abbreviation": "1jo",
+      "position": 23
+    },
+    "Verse": {
+      "text": "A vida se manifestou; nós a vimos e dela testemunhamos, e proclamamos a vocês a vida eterna, que estava com o Pai e nos foi manifestada.",
+      "chapter": 1,
+      "verse": 2
+    }
+  },
+  ......
+]
+  ```
+</details>
+
+### Verses
+
+<details>
+  <summary>
+    <b>Get Verse</b> - <i>return Verse</i>
+  </summary>
+  <br/>
+  
+  <b>Endpoint:</b> `GET https://api.biblia.help/api/version:abbrev/book:abbrev/chapters/verse`
+  <br /><br />
+  <b>Authenticated:</b> 
+  <ul>
+    <li>No</li>
+  </ul>
+
+  ```
+{
+  "Version": {
+    "name": "Nova Versão Internacional",
+    "abbreviation": "NVI"
+  },
+  "Book": {
+    "name": "I João",
+    "abbreviation": "1jo",
+    "position": 23
+  },
+  "Verse": {
+    "text": "O que era desde o princípio, o que ouvimos, o que vimos com os nossos olhos, o que contemplamos e as nossas mãos apalparam  -  isto proclamamos a respeito da Palavra da vida.",
+    "chapter": 1,
+    "verse": 1
+  }
+}
+  
+  ```
+</details>
+
