@@ -85,7 +85,7 @@
 
 <details>
   <summary>
-    <b>Get Version</b> - <i>return versions</i>
+    <b>Get Version</b> - <i>return version</i>
   </summary>
   <br/>
   
