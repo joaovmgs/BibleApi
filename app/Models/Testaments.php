@@ -13,7 +13,8 @@ class Testaments extends Model
 
     protected $fillable = [
         'testamentId',
-        'name'
+        'name',
+        'abbreviation'
     ];
 
 

@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\ChaptersController;
+use App\Http\Controllers\TestamentsController;
 use App\Http\Controllers\VersesController;
+use App\Http\Controllers\VersionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +23,18 @@ Route::resource('books',BooksController::class)->only([
     'index', 'show'
 ]);
 
+Route::resource('versions',VersionsController::class)->only([
+    'index', 'show'
+]);
 
-Route::get('verses/{abbrev}/{teste}',[VersesController::class,'show']);
+
+Route::resource('testaments',TestamentsController::class)->only([
+    'index', 'show'
+]);
+
+
+
+Route::get('{version}/{book}/{chapters}',[ChaptersController::class,'show']);
+
+Route::get('{version}/{book}/{chapters}/{verse}',[VersesController::class,'show']);
 

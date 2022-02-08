@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\TestamentsResource;
-use App\Models\Testaments;
+use App\Http\Resources\ChaptersResource;
+use App\Models\Books;
+use App\Models\Verses;
+use App\Models\Versions;
 use Illuminate\Http\Request;
 
-class TestamentsController extends Controller
+class ChaptersController extends Controller
 {
-    /**
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return TestamentsResource::collection(Testaments::all());
+      
     }
 
     /**
@@ -45,9 +47,17 @@ class TestamentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($abbrev)
+    public function show($version,$book,$chapters)
     {
-        return new TestamentsResource(Testaments::where('abbreviation', $abbrev)->firstOrFail());
+  
+        $book = Books::where('abbreviation',$book)->first();
+
+
+
+        return ChaptersResource::collection(Verses::where('capitulo', $chapters)->where('bookId', $book->bookId)->whereHas('Versions', function ($query) use ($version) {
+            return $query->where('abbreviation', '=', $version);
+        })->with(['Versions','Books'])->get());
+
     }
 
     /**

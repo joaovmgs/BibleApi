@@ -16,6 +16,7 @@ class CreateVersionsTable extends Migration
         Schema::create('versions', function (Blueprint $table) {
             $table->increments('versionId');
             $table->string('name', 60);
+            $table->string('abbreviation',6);
         });
     }
 
