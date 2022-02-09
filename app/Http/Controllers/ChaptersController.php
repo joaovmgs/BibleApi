@@ -54,43 +54,20 @@ class ChaptersController extends Controller
 
 
 
-        return ChaptersResource::collection(Verses::where('capitulo', $chapters)->where('bookId', $book->bookId)->whereHas('Versions', function ($query) use ($version) {
+        $chapters = ChaptersResource::collection(Verses::where('capitulo', $chapters)->where('bookId', $book->bookId)->whereHas('Versions', function ($query) use ($version) {
             return $query->where('abbreviation', '=', $version);
         })->with(['Versions','Books'])->get());
 
+
+
+        return response()->json([
+            'occurrence' => $chapters->count(),
+            'version' => $version,
+            'verses' => $chapters
+        ], 418); 
+
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
