@@ -3,6 +3,7 @@
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\ChaptersController;
 use App\Http\Controllers\TestamentsController;
+use App\Http\Controllers\TwitterController;
 use App\Http\Controllers\VersesController;
 use App\Http\Controllers\VersionsController;
 use Illuminate\Http\Request;
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('teste',[TwitterController::class,'twitter']);
 
 Route::resource('books',BooksController::class)->only([
     'index', 'show'

@@ -35,11 +35,6 @@ class VersesController extends Controller
             'version' => $version,
             'verses' => $verses
         ], 418); 
-
-
-
-
-
     }
 
     public function drawRandomVerse(){
