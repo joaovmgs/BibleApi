@@ -27,16 +27,18 @@ Route::resource('versions',VersionsController::class)->only([
     'index', 'show'
 ]);
 
-
 Route::resource('testaments',TestamentsController::class)->only([
     'index', 'show'
 ]);
-
-
 
 Route::get('{version}/{book}/{chapters}',[ChaptersController::class,'show']);
 
 Route::get('{version}/{book}/{chapters}/{verse}',[VersesController::class,'show']);
 
-
 Route::get('{version}/{book}/{chapters}/{openingVerse}/{lastVerse}',[VersesController::class,'versesInterval']);
+
+Route::prefix('random')->group(function () {
+
+    Route::get('versions', [VersesController::class,'drawRandomVerse']);
+
+});

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ChaptersResource;
-use App\Http\Resources\VersesResource;
 use App\Models\Books;
 use App\Models\Verses;
-use Illuminate\Http\Request;
 
 class VersesController extends Controller
 {
@@ -26,11 +24,35 @@ class VersesController extends Controller
 
         $book = Books::where('abbreviation',$book)->first();
 
-        return  ChaptersResource::collection(Verses::where('capitulo', $chapters)->where('verse' , '>=', $openingVerse)->where('verse' , '<=', $lastVerse)->where('bookId', $book->bookId)->whereHas('Versions', function ($query) use ($version) {
+        $verses =  ChaptersResource::collection(Verses::where('capitulo', $chapters)->where('verse' , '>=', $openingVerse)->where('verse' , '<=', $lastVerse)->where('bookId', $book->bookId)->whereHas('Versions', function ($query) use ($version) {
             return $query->where('abbreviation', '=', $version);
         })->with(['Versions','Books'])->get());
 
+
+
+        return response()->json([
+            'occurrence' => $verses->count(),
+            'version' => $version,
+            'verses' => $verses
+        ], 418); 
+
+
+
+
+
     }
 
+    public function drawRandomVerse(){
+
+        $book = Books::all()->random(1);
+
+
+        $verses =  new ChaptersResource(Verses::where('bookId', $book[0]->bookId)->whereHas('Versions', function ($query) {
+            return $query->where('abbreviation', '=', 'nvi');
+        })->with(['Versions','Books'])->inRandomOrder()->first());
+
+        return $verses;
+        
+    }
 
 }

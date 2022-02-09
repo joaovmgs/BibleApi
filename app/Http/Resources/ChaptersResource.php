@@ -16,7 +16,6 @@ class ChaptersResource extends JsonResource
     {
         // return $request;
         return [
-            'Version' => new VersionsResource($this->Versions),
             'Book' => new BooksResource($this->Books),
             'Verse' => [
             'text' => $this->text,
