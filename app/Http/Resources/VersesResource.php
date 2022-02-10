@@ -15,7 +15,6 @@ class VersesResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->verseId,
             'capitulo' => $this->capitulo,
             'verse' => $this->verse,
             'text' => $this->text

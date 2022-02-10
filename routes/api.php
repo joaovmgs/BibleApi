@@ -3,6 +3,7 @@
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\ChaptersController;
 use App\Http\Controllers\TestamentsController;
+use App\Http\Controllers\TwitterController;
 use App\Http\Controllers\VersesController;
 use App\Http\Controllers\VersionsController;
 use Illuminate\Http\Request;
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('teste',[TwitterController::class,'twitter']);
+
 Route::resource('books',BooksController::class)->only([
     'index', 'show'
 ]);
@@ -27,14 +30,18 @@ Route::resource('versions',VersionsController::class)->only([
     'index', 'show'
 ]);
 
-
 Route::resource('testaments',TestamentsController::class)->only([
     'index', 'show'
 ]);
-
-
 
 Route::get('{version}/{book}/{chapters}',[ChaptersController::class,'show']);
 
 Route::get('{version}/{book}/{chapters}/{verse}',[VersesController::class,'show']);
 
+Route::get('{version}/{book}/{chapters}/{openingVerse}/{lastVerse}',[VersesController::class,'versesInterval']);
+
+Route::prefix('random')->group(function () {
+
+    Route::get('versions', [VersesController::class,'drawRandomVerse']);
+
+});

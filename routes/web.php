@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json([
+        'hello' => 'You will find the documentation here --> https://github.com/joaovmgs/BibleApi',
+        '418' => 'By the way I\'m a teapot'
+    ], 418); 
 });
